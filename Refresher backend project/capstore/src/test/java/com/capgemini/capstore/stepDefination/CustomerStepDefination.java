@@ -1,0 +1,37 @@
+package com.capgemini.capstore.stepDefination;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class CustomerStepDefination {
+
+	static {
+		System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver.exe");
+
+	}
+	WebDriver driver;
+
+	@Given("^User on customers home page$")
+	public void user_on_customers_home_page() throws Throwable {
+		driver = new ChromeDriver();
+		driver.get("http://localhost:4200");
+		driver.manage().window().maximize();
+	}
+
+	@When("^click on view profile$")
+	public void click_on_view_profile() throws Throwable {
+		driver.findElement(By.xpath("//*[@id=\"collapsibleNavId\"]/ul/li[2]/a")).click();
+
+	}
+
+	@When("^User click on view ordered history$")
+	public void user_click_on_view_ordered_history() throws Throwable {
+		driver.findElement(By.xpath("//*[@id=\"collapsibleNavId\"]/ul/li[3]/a")).click();
+	    
+	}
+}

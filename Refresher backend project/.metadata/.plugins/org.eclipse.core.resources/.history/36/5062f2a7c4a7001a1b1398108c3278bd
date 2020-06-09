@@ -1,0 +1,5 @@
+package com.capgemini.capstore.controller;
+
+public class CustomerController {
+
+}

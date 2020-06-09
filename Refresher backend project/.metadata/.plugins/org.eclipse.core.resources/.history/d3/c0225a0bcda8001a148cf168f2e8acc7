@@ -1,0 +1,12 @@
+package com.capgemini.capstore.stepDefination;
+
+import org.openqa.selenium.WebDriver;
+
+public class CustomerStepDefination {
+	
+	static {
+		System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver.exe");
+
+	}
+	WebDriver driver;
+}

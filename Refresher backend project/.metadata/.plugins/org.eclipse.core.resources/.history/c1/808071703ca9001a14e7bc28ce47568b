@@ -1,0 +1,6 @@
+Feature: Managing customer home page and profile
+@tag1
+Scenario: the user has loaded the application in the browser
+Given User on customers home page
+When click on view profile
+Then All account informartion should be displayed

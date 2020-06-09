@@ -1,0 +1,5 @@
+Feature: Managing customer home page and profile
+Scenario: Update/View customers own profile
+Given User on customers home page
+When click on view/update profile
+Then All account information should be displayed

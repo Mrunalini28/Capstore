@@ -1,0 +1,49 @@
+package com.capgemini.capstore.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.capgemini.capstore.bean.LoginBean;
+import com.capgemini.capstore.bean.OrderBean;
+import com.capgemini.capstore.bean.OrderHistoryBean;
+import com.capgemini.capstore.bean.ProductBean;
+import com.capgemini.capstore.dao.CustomerDao;
+
+@Service
+public class CustomerServiceImpl implements CustomerService {
+
+	@Autowired
+	CustomerDao customerdao;
+
+	@Override
+	public LoginBean viewprofile(String email) {
+
+		return customerdao.viewprofile(email);
+	}
+
+	@Override
+	public boolean updateProfile(LoginBean loginBean) {
+
+		return customerdao.updateProfile(loginBean);
+	}
+
+	@Override
+	public List<OrderBean> orderdetails(String email) {
+
+		return customerdao.orderdetails(email);
+	}
+
+	@Override
+	public List<OrderHistoryBean> orderHistory(String email) {
+
+		return customerdao.orderHistory(email);
+	}
+
+	@Override
+	public ProductBean productsdetails(int productId) {
+		return customerdao.productsdetails(productId);
+	}
+
+}

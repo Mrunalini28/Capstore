@@ -1,0 +1,16 @@
+package com.capgemini.capstore.service;
+
+import java.util.List;
+
+import com.capgemini.capstore.bean.LoginBean;
+import com.capgemini.capstore.bean.OrderBean;
+
+public interface CustomerService {
+
+	public LoginBean viewprofile(String email);
+	
+	public boolean updateProfile(LoginBean loginBean) ;
+	
+	public List<OrderBean> orderHistory(String email);
+
+}

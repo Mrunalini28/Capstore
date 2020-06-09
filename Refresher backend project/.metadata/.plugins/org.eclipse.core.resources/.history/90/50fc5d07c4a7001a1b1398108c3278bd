@@ -1,0 +1,5 @@
+package com.capgemini.capstore.response;
+
+public class CustomerResponse {
+
+}

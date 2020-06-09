@@ -1,0 +1,36 @@
+package com.capgemini.capstore.dao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.capgemini.capstore.bean.LoginBean;
+
+@Repository
+public class CustomerDaoImpl implements CustomerDao {
+
+	@Autowired
+	EntityManagerFactory entityManagerFactory;
+
+	@Override
+	public LoginBean viewprofile(String email) {
+		LoginBean loginbean = null;
+		try {
+			EntityManager entityManager=entityManagerFactory.createEntityManager();
+			EntityTransaction entityTransaction=entityManager.getTransaction();
+			String jpql="form loginbean where email:emial";
+			Query query=entityManager.createQuery(jpql);
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return loginbean;
+
+	}
+
+}

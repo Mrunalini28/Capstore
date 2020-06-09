@@ -1,0 +1,86 @@
+package com.capgemini.capstore.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
+
+import com.capgemini.capstore.bean.LoginBean;
+import com.capgemini.capstore.bean.OrderBean;
+import com.capgemini.capstore.exception.CapstoreException;
+
+@Repository
+public class CustomerDaoImpl implements CustomerDao {
+
+	@PersistenceUnit
+	EntityManagerFactory entityManagerFactory;
+
+	@Override
+	public LoginBean viewprofile(String email) {
+		LoginBean loginbean = null;
+		try {
+			EntityManager entityManager = entityManagerFactory.createEntityManager();
+			EntityTransaction entityTransaction = entityManager.getTransaction();
+			String jpql = "from LoginBean where email =:email";
+			Query query = entityManager.createQuery(jpql);
+			query.setParameter("email", email);
+			loginbean = (LoginBean) query.getSingleResult();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return loginbean;
+	}
+
+	@Override
+	public boolean updateProfile(LoginBean loginBean) {
+		boolean isUpdated = false;
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+
+		LoginBean loginBean2 = entityManager.find(LoginBean.class, loginBean.getId());
+		if (loginBean2 != null) {
+			if (loginBean.getName() != null) {
+				loginBean2.setName((loginBean.getName()));
+			}
+
+			if (loginBean.getPhoneNumber() != null) {
+				loginBean2.setPhoneNumber((loginBean.getPhoneNumber()));
+			}
+		} else {
+			throw new CapstoreException("Invalid CustomerId ");
+		}
+		try {
+			entityTransaction.begin();
+			entityManager.persist(loginBean2);
+			entityTransaction.commit();
+			isUpdated = true;
+		} catch (Exception e) {
+			throw new CapstoreException("Unable to Update User");
+		}
+		return isUpdated;
+	}
+
+	@Override
+	public List<OrderBean> orderdetails(String email) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		String jpql = "from OrderBean where email =:email";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("email", email);
+		List<OrderBean> orderList = null;
+		try {
+			orderList = query.getResultList();
+			if (orderList == null || orderList.isEmpty()) {
+				throw new CapstoreException("You have no previous orders");
+			}
+		} catch (Exception e) {
+			throw new CapstoreException("You have no previous orders");
+		}
+		return orderList;
+	}
+}

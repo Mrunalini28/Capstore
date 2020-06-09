@@ -1,0 +1,10 @@
+package com.capgemini.capstore.dao;
+
+import com.capgemini.capstore.bean.LoginBean;
+
+public interface CustomerDao {
+	
+	public LoginBean viewprofile(String email);
+
+	public boolean updateProfile(LoginBean loginBean) ;
+}
