@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <table class="table table-bordered ">
+        <thead class="table table-dark">
+            <tr>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Pin-Code</th>
+                <th>Product Name</th>
+                <th>Product Quantity</th>
+                <th>Mode Of Payment</th>
+                <th>TotalBill</th>
+                <th>Feed Back</th>
+                
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor='let historydetails1 of historydetails'>
+                <td>{{historydetails1.email}}</td>
+                <td>{{historydetails1.address}}</td>
+                <td>{{historydetails1.pincode}}</td>
+                <td>{{historydetails1.productName}}</td>
+                <td>{{historydetails1.productQuantity}}</td>
+                <td>{{historydetails1.paymentMode}}</td>
+                <td>{{historydetails1.totalBill}}</td>
+                <td><button type="button" class="btn btn-primary">
+                    Feed Back
+                </button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

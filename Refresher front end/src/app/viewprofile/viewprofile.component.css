@@ -1,0 +1,19 @@
+.card{
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgb(59, 57, 57)
+  }
+  .card {
+    background-image: url("https://cdn.pixabay.com/photo/2019/04/10/11/56/watercolour-4116932__340.png");
+   }
+
+   /* Modal Content/Box */
+.modal-content {
+    background-image: url("https://cdn.pixabay.com/photo/2016/03/27/07/32/light-1282314__340.jpg");
+    padding: 50px;
+    border: 1px solid black;
+    width: 100%; 
+  }
+  
+  
+  
+  
